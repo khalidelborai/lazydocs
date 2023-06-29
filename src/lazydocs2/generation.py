@@ -288,9 +288,15 @@ def _is_object_ignored(obj: Any) -> bool:
     return False
 
 
-def _is_module_ignored(module_name: str, ignored_modules: List[str],include_under: bool = False) -> bool:
+def _is_module_ignored(
+    module_name: str, ignored_modules: List[str], include_under: bool = False
+) -> bool:
     """Checks if a given module is ignored."""
-    if module_name.split('.')[-1].startswith("_") and module_name[1] != "_" and not include_under:
+    if (
+        module_name.split(".")[-1].startswith("_")
+        and module_name[1] != "_"
+        and not include_under
+    ):
         return True
 
     for ignored_module in ignored_modules:
@@ -960,7 +966,7 @@ def generate_docs(
 
             # Generate one file for every discovered module
             for loader, module_name, _ in pkgutil.walk_packages([path]):
-                if _is_module_ignored(module_name, ignored_modules,include_under):
+                if _is_module_ignored(module_name, ignored_modules, include_under):
                     # Add module to ignore list, so submodule will also be ignored
                     ignored_modules.append(module_name)
                     continue
@@ -1021,7 +1027,6 @@ def generate_docs(
             # Path seems to be an import
             obj = locate(path)
             if obj is not None:
-
                 # TODO: function to get path to file whatever the object is
                 # if validate:
                 #     subprocess.call(

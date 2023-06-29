@@ -42,7 +42,7 @@ def generate(
         False,
         help="If `True`, validate the docstrings via pydocstyle. Requires pydocstyle to be installed.",
     ),
-     include_under: bool = typer.Option(
+    include_under: bool = typer.Option(
         False,
         help="If `True`, all packages starting with `_` will be included.",
     ),
@@ -59,7 +59,7 @@ def generate(
             overview_file=overview_file,
             watermark=watermark,
             validate=validate,
-            include_under=include_under
+            include_under=include_under,
         )
     except Exception as ex:
         typer.echo(str(ex))
