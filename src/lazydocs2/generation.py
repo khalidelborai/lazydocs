@@ -290,7 +290,7 @@ def _is_object_ignored(obj: Any) -> bool:
 
 def _is_module_ignored(module_name: str, ignored_modules: List[str],include_under: bool = False) -> bool:
     """Checks if a given module is ignored."""
-    if module_name.split(".")[-1].startswith("_") and module_name[1] != "_" and not include_under:
+    if module_name.split('.')[-1].startswith("_") and module_name[1] != "_" and not include_under:
         return True
 
     for ignored_module in ignored_modules:
